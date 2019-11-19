@@ -17,14 +17,14 @@ python ui.py
 ```
 
 ### Requirement
-Environment: ubuntu16.04 Python2.7
-Package:
--imutils
--opencv-python
--dlib(pip install dlib -i https://pypi.douban.com/simple)
--PyQt4(sudo apt-get install python3-pyqt4)
--Pillow
--numpy
+1. Environment: ubuntu16.04 Python2.7
+2. Package:
+- imutils
+- opencv-python
+- dlib(pip install dlib -i https://pypi.douban.com/simple)
+- PyQt4(sudo apt-get install python3-pyqt4)
+- Pillow
+- numpy
 ### Attention
 SDK每年需要更新一次，到Arcsoft网上去重新申请SDK，并更新相应的2个so文件以及几个文件中的sdkkey的秘钥。(注意使用的是v1.1的版本，申请的时候会给
 APPID，同时也会给出SDK KEY，里面包括FD/FT/FR/Age/Gender,复制FD和FR的KEY到程序中即可)
