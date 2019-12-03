@@ -1,6 +1,4 @@
 # -*- coding:utf-8 -*-
-
-import PyQt4
 from PyQt4.QtCore import *
 import time
 

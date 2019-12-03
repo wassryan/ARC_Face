@@ -5,11 +5,9 @@ from arcsoft import CLibrary, ASVL_COLOR_FORMAT, ASVLOFFSCREEN, c_ubyte_p, FaceI
 # from ..arcsoft.AFD_FSDKLibrary import *
 # from ..arcsoft.AFR_FSDKLibrary import *
 from ctypes import *
-from FaceBase import *
-import traceback
-import os
+# from FaceBase import *
 import time
-from AFR_face import *
+from face_core import *
 
 APPID = c_char_p(b'FBmQrBiFKgDS4UenPAXXSmH4mWXSd6V5oq4yFc17YynT')
 FD_SDKKEY = c_char_p(b'C4wd8EyQjD57EPbXuPmSBLjxwJpRMJPb66HjuwWitHE7')

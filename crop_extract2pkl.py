@@ -1,6 +1,5 @@
 # -*- coding: UTF-8 -*-
-from my_untils import *
-from AFR_face import *
+from my_untils.face_core import *
 from my_untils.image_resize import *
 from my_untils.FaceBase import *
 import dlib

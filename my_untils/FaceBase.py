@@ -1,26 +1,21 @@
 # -*- coding: UTF-8 -*-
 import os
-from AFR_face import *
+from face_core import *
 import pickle
-import copy
-import json
 import sys
 
-
-# import struct
-
-
 class FaceBase:
-    # 字典 faces 的结构
-    # faces = {
-    #     'ID': {
-    #         'Name': 'unknown',
-    #         'Age': '0',
-    #         'FaceFeature': '',
-    #         'Gender': ''
-    #     },
-    # }
-
+    '''
+    字典 faces 的结构
+    faces = {
+        'ID': {
+            'Name': 'unknown',
+            'Age': '0',
+            'FaceFeature': '',
+            'Gender': ''
+        },
+    }
+    '''
     def __init__(self, type=0, faces={}, size=0):
         self.type = type
         self.faces = faces
@@ -62,7 +57,6 @@ class FaceBase:
 
     # 保存
     def savefacedata(self, path='facedata', filename='facedata.pkl', bytetype=False):
-
         try:
             self.featureToBytes()
             with open(os.path.join(path, filename), 'wb') as f:
@@ -74,46 +68,35 @@ class FaceBase:
             if not bytetype:
                 self.featureFromBytes()
 
-            # 转化为 byte 格式,以便于保存成文件
-
+    # 转化为 byte 格式,以便于保存成文件
     def featureToBytes(self):
         for k, v in self.faces.iteritems():
             print(v['FaceFeature'])
-            # feature_temp = v['FaceFeature'].deepCopy()
             feature_temp = v['FaceFeature']
-
             self.faces[k]['FaceFeature'] = feature_temp.toByteArray()
             # feature_temp.freeUnmanaged()
 
-        # 将特征从 byte 格式转换成 虹软格式
-
+    # 将特征从 byte 格式转换成 虹软格式
     def featureFromBytes(self):
         feature_temp = AFR_FSDK_FACEMODEL()
         try:
-
             for k, v in self.faces.iteritems():
                 # feature_temp = AFR_FSDK_FACEMODEL()
                 v['FaceFeature'] = feature_temp.fromByteArray(v['FaceFeature'])
-
         except Exception as e:
             print(e)
         finally:
             feature_temp.freeUnmanaged()
 
-        # 从文件中加载数据
-
+    # 从文件中加载数据
     def loadfacedata(self, path='facedata', filename='facedata.pkl'):
-
         with open(os.path.join(path, filename), 'rb') as f:
             try:
-                # binfaces = f.read()
-                # self.faces = struct.unpack('1024p', binfaces)
                 self.faces = pickle.load(f)
             except:
                 print('file ' + filename + ' not exist! now new an facedata file')
                 self.savefacedata(path, filename)
             finally:
-
                 print('success load facedata')
         self.featureFromBytes()
 
@@ -130,7 +113,6 @@ class FaceBase:
     def getValueFromID(self, ID):
         return self.faces[ID]
 
-
     def getValueFromFeature(self, feature):
         for k, v in self.faces.iteritems():
             if v['FaceFeature'] == feature:
@@ -142,18 +124,14 @@ class FaceBase:
                 return k
 
     def getFeatureFromID(self, ID):
-
         return self.faces[ID]['FaceFeature']
-
 
     def changeFaceData(self, ID=None, value={}):
         if ID == None and value['FaceFeature'] != None:
             ID = self.getIDFromFeature(value['FaceFeature'])
-
         elif ID == None and value['FaceFeature'] == None:
             print ('fail to change face data')
             return -1
-
 
         self.faces[ID] = value
 
@@ -170,46 +148,6 @@ class FaceBase:
             del self.faces[ID]
         except Exception as e:
             print(e)
-
-
-# '''
-# def initfacefromdir(hFDEngine, hFREngine, path, facebase):
-#     lists = os.listdir(path)
-#
-#     for img in lists:
-#         inputImage = loadImageData(path + img)
-#         faceInfos, i = doFaceDetection(hFDEngine, inputImage)
-#         if len(faceInfos) < 1:
-#             print(u'no face in Image ')
-#             return 0.0
-#
-#         # Extract Face Feature 提取人脸特征
-#         faceFeature = extractFRFeature(hFREngine, inputImage, faceInfos[i])
-#         if faceFeature == None:
-#             print(u'extract face feature in Image faile')
-#             return 0.0
-#
-#         if -1 == facebase.add_face(faceFeature,ID=img.split('.')[0],Name=img.split('_')[0] + '_' +img.split('_')[1]):
-#             print('Fail to add this face !')
-#
-#
-# # 注册人脸
-# def initface(hFDEngine, hFREngine, facebase, inputImage, ID, Name='Unknow'):
-#     # 人脸检测
-#     faceInfos, i = doFaceDetection(hFDEngine, inputImage)
-#     if len(faceInfos) < 1:
-#         print(u'no face in Image ')
-#         return 0.0
-#
-#     # Extract Face Feature 提取人脸特征
-#     faceFeature = extractFRFeature(hFREngine, inputImage, faceInfos[i])
-#     if faceFeature == None:
-#         print(u'extract face feature in Image faile')
-#         return 0.0
-#
-#     if -1 == facebase.add_face(feature=faceFeature, ID=ID, Name=Name):
-#         print('fail to add this face!')
-# '''
 
 if __name__ == u'__main__':
     # init Engine

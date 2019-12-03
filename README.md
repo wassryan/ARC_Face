@@ -1,16 +1,18 @@
-### ARC_Face
+
+# ARC_Face
 1. 该部分是门禁端的程序（原系统是包含门禁端、移动端、服务器端的，是一套连接手机应用app、服务器端管理和门禁端识别的整套系统）
+![image](https://github.com/k-miracle/ARC_Face/blob/master/demo.png)
 2. 本程序包括：
-#### 获取人脸的方式
+### 获取人脸的方式
 - 从服务器端获得人脸到web_dataset目录
 - 直接在本地添加人脸照片到face_base
-#### 获取人脸特征文件
+### 获取人脸特征文件
 1. 在facedata/faces/目录下生成crop后的人脸
 2. 提取crop后人脸的特征到facedata/faces/目录下的`.pkl`文件中
 ```
 python crop_extract2pkl.py
 ```
-#### 运行主程序
+### 运行主程序
 开启界面，检测人脸，与本地数据库人脸匹配，判断审核是否通过到界面上
 ```
 python ui.py
