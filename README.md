@@ -1,6 +1,7 @@
 
 # ARC_Face
-**Attention: I am redeveloping this system in a more elegant and efficient way with new face recognition techniques, it will also support python3 and cut down useless library, keep following!**
+## Attention
+*I am redeveloping this system in a more elegant and efficient way with new face recognition techniques, it will also support python3 and cut down useless library, keep following!*
 ## Demo
 1. 该部分是门禁端的程序（原系统是包含门禁端、移动端、服务器端的，是一套连接手机应用app、服务器端管理和门禁端识别的整套系统）
 ![image](https://github.com/wassryan/ARC_Face/blob/master/demo.png)
