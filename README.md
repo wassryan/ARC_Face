@@ -1,8 +1,10 @@
 
 # ARC_Face
+**Attention: I am redeveloping this system in a more elegant and efficient way with new face recognition techniques, it will also support python3 and cut down useless library, keep following!**
+## Demo
 1. 该部分是门禁端的程序（原系统是包含门禁端、移动端、服务器端的，是一套连接手机应用app、服务器端管理和门禁端识别的整套系统）
-![image](https://github.com/k-miracle/ARC_Face/blob/master/demo.png)
-2. 本程序包括：
+![image](https://github.com/wassryan/ARC_Face/blob/master/demo.png)
+## Main Component
 ### 获取人脸的方式
 - 从服务器端获得人脸到web_dataset目录
 - 直接在本地添加人脸照片到face_base
